@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Элегант - Салон красоты премиум-класса</title>
+    <style>
+        /* Основные стили */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #3a2e2a;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff9f5 50%, #f5f9ff 100%);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Цветовая палитра */
+        :root {
+            --primary: #ff7eb9;
+            --primary-light: #ffb3d9;
+            --secondary: #7ea8ff;
+            --secondary-dark: #5d8cff;
+            --white: #ffffff;
+            --light: #fff9fc;
+            --dark: #3a2e2a;
+            --gold: #d4af37;
+            --shadow: 0 4px 15px rgba(126, 168, 255, 0.3);
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Шапка сайта */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Общие стили кнопок */
+        .btn {
+            display: inline-block;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        /* Кнопка в шапке (розовая) */
+        .header-btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            box-shadow: 0 4px 20px rgba(255, 126, 185, 0.4);
+        }
+
+        .header-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 126, 185, 0.5);
+        }
+
+        /* Кнопка в основном контенте (синяя) */
+        .content-btn {
+            background: linear-gradient(45deg, var(--secondary), var(--secondary-dark));
+            box-shadow: 0 4px 20px rgba(126, 168, 255, 0.4);
+        }
+
+        .content-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(126, 168, 255, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Герой-секция */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-light) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0.25;
+            z-index: 0;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 62px);
+            margin-bottom: 25px;
+            color: var(--dark);
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff7eb9, #7ea8ff, #d4af37);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: textShine 3s linear infinite;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2.2vw, 20px);
+            margin-bottom: 35px;
+            color: var(--dark);
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* Секция услуг */
+        .services {
+            padding: 100px 5%;
+            background-color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 42px);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -15px;
+            left: 20%;
+            border-radius: 3px;
+            transition: all 0.5s;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 35px 30px;
+            border-radius: 18px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(126, 168, 255, 0.15);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.4s;
+        }
+
+        .service-card h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--dark);
+            opacity: 0.85;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* О нас */
+        .about {
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, #f5f9ff 0%, #fff9f5 100%);
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 25px 50px rgba(126, 168, 255, 0.15);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 30px 60px rgba(126, 168, 255, 0.2);
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 50px;
+        }
+
+        .about h2 {
+            font-size: clamp(32px, 5vw, 42px);
+            margin-bottom: 35px;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .about p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--dark);
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand-name::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        /* Запись */
+        .booking {
+            padding: 100px 5%;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #fff9f5 0%, #f5f9ff 100%);
+        }
+
+        .booking p {
+            max-width: 650px;
+            margin: 0 auto 45px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--dark);
+            opacity: 0.9;
+        }
+
+        /* Подвал */
+        footer {
+            background: linear-gradient(135deg, #2a2220 0%, #3a2e2a 100%);
+            color: var(--white);
+            padding: 80px 5% 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-contacts p {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 17px;
+        }
+
+        .footer-contacts i {
+            font-size: 20px;
+            color: var(--primary-light);
+        }
+
+        .social-links {
+            margin: 40px 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin: 0 15px;
+            font-size: 24px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .copyright {
+            font-size: 15px;
+            opacity: 0.7;
+            margin-top: 30px;
+        }
+
+        /* Декоративные элементы */
+        .decorative-line {
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+            }
+
+            .hero {
+                padding-top: 90px;
+                text-align: center;
+            }
+
+            .about-content {
+                padding: 40px 0 0;
+                text-align: center;
+            }
+
+            .about-image {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .footer-contacts p {
+                font-size: 15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <a href="contacts.html" class="btn header-btn">Записаться</a>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Салон красоты премиум-класса</h1>
+            <div class="hero-title">"ЭЛЕГАНТ"</div>
+            <p>Погрузитесь в мир роскоши и профессионального ухода в нашем салоне. Индивидуальный подход и лучшие косметические бренды мирового уровня.</p>
+            <a href="contacts.html" class="btn content-btn">Записаться онлайн</a>
+        </div>
+    </section>
+
+    <!-- Секция услуг -->
+    <section class="services">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="decorative-line"></div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3>Парикмахерские услуги</h3>
+                <p>Стрижки, окрашивание, укладки, кератиновое выпрямление от ведущих мастеров с международным опытом.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Уход за лицом</h3>
+                <p>Профессиональные уходы, чистки, массажи и омолаживающие процедуры с использованием косметики премиум-класса.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <h3>Маникюр и педикюр</h3>
+                <p>Аппаратный, комбинированный маникюр и педикюр с использованием исключительно профессиональных материалов.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about">
+        <div class="about-image">
+            <img src="Салон_красоты.avif" alt="Интерьер салона Элегант">
+        </div>
+        <div class="about-content">
+            <h2>О нашем салоне</h2>
+            <p><span class="brand-name">"Элегант"</span> — это место, где встречаются профессионализм и душевная атмосфера. Наша команда состоит из опытных мастеров, которые регулярно повышают квалификацию на международных мастер-классах.</p>
+            <p>Мы используем только профессиональную косметику премиум-класса и стерильные инструменты. Ваша безопасность, комфорт и безупречный результат — наш главный приоритет.</p>
+        </div>
+    </section>
+
+    <!-- Запись -->
+    <section class="booking">
+        <h2 class="section-title">Готовы преобразиться?</h2>
+        <div class="decorative-line"></div>
+        <p>Наш администратор с радостью подберет для вас удобное время и расскажет обо всех деталях посещения салона.</p>
+        <a href="contacts.html" class="btn content-btn">Записаться на прием</a>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-contacts">
+            <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Красивая, 15</p>
+            <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+            <p><i class="fas fa-envelope"></i> info@elegant-beauty.ru</p>
+            <p><i class="fas fa-clock"></i> Ежедневно с 9:00 до 21:00</p>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-vk"></i></a>
+        </div>
+        <p class="copyright">© 2025 Салон красоты "Элегант". Все права защищены.</p>
+    </footer>
+</body>
+</html>
