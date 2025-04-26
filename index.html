@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturа - Салон красоты</title>
+    <style>
+        /* Base styles */
+        :root {
+            --light-green: #f0f7ed;
+            --dark-green: #142115;
+            --accent-green: #6aaf5c;
+            --accent-green-dark: #5a9a4d;
+            --gray-text: #4a524c;
+            --beige-bg: #f5f1e9;
+            --text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --gradient-green: linear-gradient(135deg, var(--accent-green) 0%, #8bc34a 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            line-height: 1.7;
+            position: relative;
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,10 Q50,5 70,10 Q95,30 90,50 Q85,70 70,90 Q50,95 30,90 Q5,70 10,50 Q15,30 30,10 Z" fill="none" stroke="%234e9a3e" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: 200px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        /* Header styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(240, 247, 237, 0.98);
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            animation: fadeInDown 0.8s ease-out;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(20, 33, 21, 0.1);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Lora', serif;
+            letter-spacing: 1px;
+            color: var(--dark-green);
+            position: relative;
+            text-shadow: var(--text-shadow);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 5px;
+            fill: var(--accent-green);
+        }
+        
+        .nav-container {
+            position: relative;
+        }
+        
+        nav ul {
+            display: flex;
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
+    font-weight: 600;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    padding: 8px 0;
+    color: var(--dark-green);
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-green);
+    opacity: 1;
+}
+
+        nav ul li a.active {
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+
+
+        
+/* Зеленая подсветка */
+.nav-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--gradient-green);
+    border-radius: 20px;
+    z-index: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+        
+nav ul li:last-child:hover ~ .nav-highlight {
+    transform: translateX(100%);
+}
+nav ul li:last-child a:hover {
+    color: var(--accent-green) !important;
+    opacity: 1 !important;
+}
+        
+/* Main content styles */
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 150px 5% 100px;
+    min-height: 100vh;
+    position: relative;
+}
+        
+.text-content {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 1s ease-out;
+}
+        
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+        
+.text-content h1 {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.3;
+    font-family: 'Lora', serif;
+    color: var(--dark-green);
+    text-shadow: var(--text-shadow);
+}
+        
+.text-content p {
+    color: var(--gray-text);
+    margin-bottom: 35px;
+    font-size: 18px;
+    max-width: 90%;
+    font-weight: 400;
+}
+        
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+        
+.btn {
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+        
+.btn-primary {
+    background: var(--gradient-green);
+    color: white;
+    box-shadow: 0 4px 15px rgba(78, 154, 62, 0.5);
+}
+        
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(78, 154, 62, 0.6);
+    background: linear-gradient(135deg, var(--accent-green-dark) 0%, #7cb342 100%);
+}
+        
+.btn-secondary {
+    border: 2px solid var(--dark-green);
+    color: var(--dark-green);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+        
+.btn-secondary:hover {
+    background-color: var(--dark-green);
+    color: white;
+    transform: translateY(-3px);
+}
+        
+.image-content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+    animation: fadeInRight 1s ease-out;
+}
+        
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+        
+.main-image {
+    width: 380px;
+    height: 500px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 20px 20px 0px rgba(20, 33, 21, 0.1);
+    border: 12px solid white;
+    transform: rotate(-3deg);
+    position: relative;
+    background-color: #ddd;
+    transition: transform 0.5s ease;
+    z-index: 2;
+}
+        
+.main-image:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+        
+/* Services section */
+.services {
+    padding: 150px 5% 120px;
+    background-color: var(--light-green);
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+    margin-top: -50px;
+    z-index: 2;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20,50 Q35,20 50,50 Q65,80 80,50" fill="none" stroke="%234e9a3e" stroke-width="0.5" opacity="0.1"/></svg>');
+    background-size: 150px;
+}
+        
+.section-title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 70px;
+    color: var(--dark-green);
+    font-family: 'Lora', serif;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: var(--text-shadow);
+}
+        
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: var(--gradient-green);
+    transition: all 0.5s ease;
+}
+        
+.section-title:hover::after {
+    width: 80%;
+    left: 10%;
+}
+        
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+        
+.service-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+        
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+        
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+        
+.service-content {
+    padding: 25px;
+}
+        
+.service-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Lora', serif;
+    color: var(--dark-green);
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    text-shadow: var(--text-shadow);
+}
+        
+.service-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-green);
+    transition: width 0.4s ease;
+}
+        
+.service-card:hover .service-title::after {
+    width: 100%;
+}
+        
+.service-description {
+    color: var(--gray-text);
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+        
+.service-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--gradient-green);
+    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(78, 154, 62, 0.4);
+    border: 2px solid transparent;
+    font-family: 'Poppins', sans-serif;
+}
+        
+.service-btn:hover {
+    background: white;
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(78, 154, 62, 0.5);
+}
+
+/* Reviews section - измененная стилизация */
+.reviews {
+    padding: 180px 5% 140px;
+    background-color: white;
+    position: relative;
+    clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+    margin-top: -50px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20,50 Q35,20 50,50 Q65,80 80,50" fill="none" stroke="%234e9a3e" stroke-width="0.5" opacity="0.1"/></svg>');
+    background-size: 150px;
+}
+        
+.reviews-container {
+    max-width: 800px; /* Уменьшил ширину контейнера */
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+        
+.review-slider {
+    position: relative;
+    padding: 0 80px;
+}
+        
+.review {
+    background-color: var(--light-green);
+    padding: 30px; /* Изменил отступы */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+        
+.review.active {
+    display: block;
+    animation: fadeIn 0.6s ease-in-out;
+}
+        
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+        
+.review-text {
+    margin-bottom: 30px;
+    color: var(--gray-text);
+    font-size: 18px;
+    line-height: 1.8;
+    position: relative;
+    font-weight: 400;
+    font-style: italic;
+    padding: 0 40px; /* Увеличил отступы для кавычек */
+}
+        
+.review-text::before,
+.review-text::after {
+    content: '';
+    position: absolute;
+    font-size: 60px;
+    color: var(--accent-green);
+    opacity: 0.3;
+    line-height: 1;
+    font-family: 'Times New Roman', serif;
+}
+        
+.review-text::before {
+    content: '“';
+    top: -20px;
+    left: 0;
+}
+        
+.review-text::after {
+    content: '”';
+    bottom: -40px;
+    right: 0;
+}
+
+/* Новая стилизация автора отзыва */
+.review-author-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.review-author {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--dark-green);
+    text-shadow: var(--text-shadow);
+    font-family: 'Lora', serif;
+    margin-bottom: 10px;
+}
+
+.review-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-green);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.review-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(106, 175, 92, 0.3);
+}
+
+.review-rating {
+    color: var(--accent-green);
+    margin-top: 10px;
+    font-size: 18px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+        
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 10;
+}
+        
+.slider-arrow {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 20px;
+    color: var(--dark-green);
+    pointer-events: auto;
+}
+        
+.slider-arrow:hover {
+    background: var(--gradient-green);
+    color: white;
+    transform: scale(1.1);
+}
+        
+.review-dots {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 40px;
+}
+        
+.review-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+        
+.review-dot.active {
+    background: var(--gradient-green);
+    transform: scale(1.3);
+    box-shadow: 0 2px 5px rgba(78, 154, 62, 0.5);
+}
+
+/* Footer - измененная стилизация контактов */
+footer {
+    background: var(--light-green);
+    color: var(--dark-green);
+    text-align: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    margin-top: -50px;
+    clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+    border-top: 1px solid rgba(20, 33, 21, 0.1);
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,10 Q50,5 70,10 Q95,30 90,50 Q85,70 70,90 Q50,95 30,90 Q5,70 10,50 Q15,30 30,10 Z" fill="none" stroke="%234e9a3e" stroke-width="0.5" opacity="0.1"/></svg>');
+    background-size: 200px;
+}
+        
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+        
+.footer-column {
+    padding: 0 20px;
+}
+        
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-family: 'Lora', serif;
+    position: relative;
+    display: inline-block;
+}
+        
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: var(--accent-green);
+}
+
+/* Стиль для слова "Контакты" при наведении */
+.footer-column h3:hover {
+    color: var(--accent-green);
+    transition: color 0.3s ease;
+}
+        
+.footer-column p, 
+.footer-column a {
+    margin-bottom: 15px;
+    display: block;
+    color: var(--gray-text);
+    transition: all 0.3s;
+}
+        
+.footer-column a:hover {
+    color: var(--dark-green);
+    transform: translateX(5px);
+}
+        
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(20, 33, 21, 0.1);
+    color: var(--gray-text);
+}
+        
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .main-image {
+        width: 350px;
+        height: 450px;
+    }
+}
+        
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+            
+    .text-content {
+        margin-bottom: 50px;
+        max-width: 100%;
+    }
+            
+    .text-content p {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+            
+    .buttons {
+        justify-content: center;
+    }
+            
+    .image-content {
+        margin-top: 50px;
+        justify-content: center;
+    }
+            
+    .main-image {
+        width: 320px;
+        height: 420px;
+    }
+            
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+            
+    .review-slider {
+        padding: 0 60px;
+    }
+}
+        
+@media (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+    }
+            
+    nav ul {
+        padding: 8px;
+    }
+
+    nav ul li {
+        margin: 0 5px; /* Установите отступы между ссылками */
+    }
+            
+    nav ul li a {
+        font-size: 15px;
+        padding: 6px 12px;
+    }
+            
+    .text-content h1 {
+        font-size: 42px;
+    }
+            
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+            
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+            
+    .section-title {
+        font-size: 36px;
+    }
+            
+    .review {
+        padding: 30px 20px;
+    }
+            
+    .review-text {
+        padding: 0 30px;
+    }
+            
+    .services, .reviews {
+        clip-path: polygon(0 1%, 100% 0, 100% 99%, 0 100%);
+    }
+            
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+            
+    .footer-column h3::after {
+        left: 25%;
+        width: 50%;
+    }
+            
+    .review-slider {
+        padding: 0 40px;
+    }
+}
+        
+@media (max-width: 576px) {
+    .logo {
+        font-size: 22px;
+    }
+
+    nav ul li {
+        margin: 0 4px; /* Установите меньшие отступы для еще меньших экранов */
+    }
+            
+    .logo svg {
+        width: 22px;
+        height: 22px;
+    }
+            
+    nav ul {
+        padding: 5px;
+    }
+            
+    nav ul li a {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+            
+    .text-content h1 {
+        font-size: 32px;
+    }
+            
+    .text-content p {
+        font-size: 16px;
+    }
+            
+    .main-image {
+        width: 280px;
+        height: 380px;
+    }
+            
+    .section-title {
+        font-size: 30px;
+    }
+            
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+            
+    .review {
+        padding: 25px 15px;
+    }
+            
+    .review-text {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+            
+    .slider-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+            
+    .review-slider {
+        padding: 0 20px;
+    }
+            
+    .review-avatar {
+        width: 60px;
+        height: 60px;
+    }
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/>
+                <path d="M12,6c-3.31,0-6,2.69-6,6s2.69,6,6,6s6-2.69,6-6S15.31,6,12,6z M12,16c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4 S14.21,16,12,16z"/>
+                <path d="M12,10c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S13.1,10,12,10z"/>
+            </svg>
+            Naturа
+        </div>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Главная</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="main-content">
+            <div class="text-content">
+                <h1>Преобразите свою кожу с помощью силы природы</h1>
+                <p>Салон красоты Natura — это оазис гармонии и ухода, где каждая деталь создана для вашего комфорта и красоты. Мы сочетаем современные технологии с дарами природы.</p>
+                <div class="buttons">
+                    <a href="#services" class="btn btn-primary">Наши услуги</a>
+                    <a href="contacts.html" class="btn btn-secondary">Контакты</a>
+                </div>
+            </div>
+            <div class="image-content">
+                <img src="images/Нач2.jpg" alt="Салон красоты Natura" class="main-image">
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/Уход за лицом.jpg" alt="Уход за лицом" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Уход за лицом</h3>
+                        <p class="service-description">Индивидуальные программы ухода с использованием премиальной органической косметики для всех типов кожи</p>
+                        <a href="contacts.html" class="service-btn">Записаться</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/Спа-процедуры.webp" alt="SPA-процедуры" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">SPA-процедуры</h3>
+                        <p class="service-description">Расслабляющие и омолаживающие программы для тела с использованием натуральных компонентов</p>
+                        <a href="contacts.html" class="service-btn">Записаться</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/МИП.webp" alt="Маникюр и педикюр" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Маникюр и педикюр</h3>
+                        <p class="service-description">Профессиональный уход за руками и ногами с использованием экологичных материалов и инновационных технологий</p>
+                        <a href="contacts.html" class="service-btn">Записаться</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/Макияж.jpg" alt="Макияж" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Макияж</h3>
+                        <p class="service-description">Идеальный макияж для любого случая: от естественного дневного до эффектного вечернего образа</p>
+                        <a href="contacts.html" class="service-btn">Записаться</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/Депиляция.jpg" alt="Депиляция" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Депиляция</h3>
+                        <p class="service-description">Безболезненные методы удаления волос с длительным эффектом и уходом за кожей после процедуры</p>
+                        <a href="contacts.html" class="service-btn">Записаться</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="images/СИУ.jpg" alt="Стрижки и укладки" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Стрижки и укладки</h3>
+                        <p class="service-description">Авторские стрижки и укладки от топ-стилистов с учетом вашего типа лица и структуры волос</p>
+                        <a href="contacts.html" class="service-btn">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="reviews-container">
+                <div class="slider-nav">
+                    <div class="slider-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="review-slider">
+                    <div class="review active">
+                        <p class="review-text">Очень довольна посещением салона Natura! Мастер по маникюру - настоящий профессионал, сделала все аккуратно и красиво. Обязательно вернусь снова. Отдельное спасибо за уютную атмосферу и внимательное отношение.</p>
+                        <div class="review-author-container">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Анна" class="review-avatar">
+                            <p class="review-author">Анна, 28 лет</p>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review">
+                        <p class="review-text">Делала здесь чистку лица - результат превзошел все ожидания! Кожа стала гладкой и сияющей, а сама процедура была очень комфортной. Спасибо мастеру за индивидуальный подход и подробные рекомендации по уходу.</p>
+                        <div class="review-author-container">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Елена" class="review-avatar">
+                            <p class="review-author">Елена, 35 лет</p>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review">
+                        <p class="review-text">Лучшая стрижка в моей жизни! Мастер точно понял, что я хочу, и дал ценные советы по уходу за волосами. Теперь только в Natura! Атмосфера салона настолько приятная, что хочется возвращаться снова и снова.</p>
+                        <div class="review-author-container">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Мария" class="review-avatar">
+                            <p class="review-author">Мария, 24 года</p>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-dots">
+                    <div class="review-dot active" data-index="0"></div>
+                    <div class="review-dot" data-index="1"></div>
+                    <div class="review-dot" data-index="2"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Красивая, 15</p>
+                <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@natura-beauty.ru</p>
+            </div>
+            <div class="footer-column">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 21:00</p>
+                <p>Сб-Вс: 10:00 - 20:00</p>
+            </div>
+            <div class="footer-column">
+                <h3>Социальные сети</h3>
+                <p><a href="#"><i class="fab fa-instagram"></i> Instagram</a></p>
+                <p><a href="#"><i class="fab fa-vk"></i> ВКонтакте</a></p>
+                <p><a href="#"><i class="fab fa-telegram"></i> Telegram</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Салон красоты Natura. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Слайдер отзывов
+            const reviews = document.querySelectorAll('.review');
+            const dots = document.querySelectorAll('.review-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentReview = 0;
+            
+            function showReview(index) {
+                reviews.forEach(review => review.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                reviews[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentReview = index;
+            }
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    showReview(parseInt(this.getAttribute('data-index')));
+                });
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                let newIndex = currentReview - 1;
+                if (newIndex < 0) newIndex = reviews.length - 1;
+                showReview(newIndex);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                let newIndex = currentReview + 1;
+                if (newIndex >= reviews.length) newIndex = 0;
+                showReview(newIndex);
+            });
+            
+            // Автоматическая смена отзывов
+            let slideInterval = setInterval(() => {
+                let newIndex = currentReview + 1;
+                if (newIndex >= reviews.length) newIndex = 0;
+                showReview(newIndex);
+            }, 5000);
+            
+            // Остановка при наведении
+            const slider = document.querySelector('.review-slider');
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => {
+                    let newIndex = currentReview + 1;
+                    if (newIndex >= reviews.length) newIndex = 0;
+                    showReview(newIndex);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
